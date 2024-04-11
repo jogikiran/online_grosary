@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="conntainer mt-5 text-center">
+        <div class="col-md-3 offset-5">
+            <h2>Login User</h2>
+            <form action="." method="post" class="text-bg-warning p-3">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="disabledTextInput" class="form-label">User Name</label>
+                    <input type="text" name="username" class="form-control" placeholder="Enter Username"><br>
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Enter Password"><br>
+                  </div>
+                  <button type="submit" class="btn btn-info">Submit</button>
+                  <p>You are not register pelse register fist</p><a class="link-underline-primary" href="/users/register-users/">Register</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

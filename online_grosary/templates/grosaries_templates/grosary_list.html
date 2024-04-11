@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container text-center">
+    <div class="row">
+        {% for grosary in grosaries %}
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            <a href="/grosary/grosary-details/{{grosary.id}}/"><img src="{{grosary.image.url}}" class="card-img-top" alt="..."></a>
+            <div class="card-body">
+              <h5 class="card-title">{{grosary.grosary_name}}</h5>
+              <h4 class="card-title">prize :  ₹ {{grosary.prize}} kg</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <form action="/grosary/place-order/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="grosary_id" value="{{grosary.id}}">
+                <input type="submit" class="btn btn-info" value="Place Order">
+                <a class="btn btn-success" href="/grosary/grosary-update/{{grosary.id}}/">Update</a>
+              </form>
+            
+
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

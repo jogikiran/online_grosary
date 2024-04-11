@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table table-primary table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Prize</th>
+            <th scope="col">Status</th>
+            <th scope="col">Order Date</th>
+            <th scope="col">Action</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for mart in marts %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ mart.user.username }}</td>
+                <td>{{ mart.grosary.grosary_name }}</td>
+                <td><img src="{{mart.grosary.image.url}}" height="40"></td>
+                <td>{{ mart.grosary.prize }}</td>
+                <td>{{ mart.status }}</td>
+                <td>{{ mart.ordered_date }}</td>
+                <td><a class="btn btn-danger" href="/grosary/cancel-order/{{mart.id}}/">Cancel</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
